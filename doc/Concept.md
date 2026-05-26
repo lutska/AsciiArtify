@@ -171,7 +171,7 @@ For the AsciiArtify PoC, **k3d** is the recommended tool due to its speed, low r
 #### Installation
 
 ```bash
-# Install k3d (Linux/macOS)
+# Install k3d from https://k3d.io/stable/#installation)
 curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
 
 # Verify installation
@@ -182,42 +182,70 @@ k3d version
 
 Below is a demonstration of deploying a simple application using k3d:
 
-![k3d Demo](demo.gif)
+![k3d Demo](.data/demo.gif)
+
 
 **Step-by-step commands:**
 
 ```bash
-# 1. Create a new cluster named "asciiartify"
-k3d cluster create asciiartify --agents 2 --port "8080:80@loadbalancer"
+# 1. Create a new cluster named "demo"
 
-# 2. Verify cluster is running
+k3d cluster create demo
+
+# 2. Verify cluster
+
 kubectl cluster-info
 kubectl get nodes
 
-# 3. Deploy a "Hello World" application
-kubectl create deployment hello-world --image=nginx:alpine
+#check if the API server ready to serve requests
+kubectl get --raw='/readyz?verbose'
+
+# 3. Build image (using Dockerfile)
+
+docker build -t hello-busybox:v1.0 .
+
+# 4. Import image to k3d
+
+k3d image import hello-busybox:v1.0 -c demo
+
+
+# 5. Deploy app
+
+kubectl create deploy hello --image=hello-busybox:v1.0
 
 # 4. Verify deployment
-kubectl get deployments
+
+kubectl get deploy -o wide
 kubectl get pods
 
-# 5. Expose the application via LoadBalancer
-kubectl expose deployment hello-world --type=LoadBalancer --port=80
+
+# 5. Expose service
+
+kubectl expose deploy/hello --port=80 --target-port=8080
+
 
 # 6. Verify service
-kubectl get services
 
-# 7. Access the application
-# The application is now accessible at http://localhost:8080
+kubectl get svc
+kubectl get endpoints
 
-# 8. Scale the application
-kubectl scale deployment hello-world --replicas=3
-kubectl get pods
+
+# 7. Forward the port to 8088
+
+kubectl port-forward svc/hello 8088:80&
+
+
+# 8. Access the application 
+
+curl localhost:8088
+# or Open Ports tab in Codespaces UI
+
 
 # 9. Clean up
-kubectl delete service hello-world
-kubectl delete deployment hello-world
-k3d cluster delete asciiartify
+
+kubectl delete service hello
+kubectl delete deployment hello
+k3d cluster delete demo
 ```
 
 #### Key Observations
@@ -225,7 +253,7 @@ k3d cluster delete asciiartify
 - **Cluster creation:** ~15 seconds
 - **Application deployment:** ~10 seconds
 - **Resource usage:** ~400 MB memory
-- **Built-in load balancer:** Works immediately without additional configuration
+
 
 ---
 

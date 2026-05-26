@@ -1,0 +1,7 @@
+#asciinema recordings
+*.cast
+#docker build artifacts
+*.tar
+#kubernetes 
+*.log
+*.tmp
