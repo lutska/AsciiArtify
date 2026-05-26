@@ -1,4 +1,4 @@
-# Comparative Analysis of Kubernetes Tools for Local Development
+# Comparative Analysis of Kubernetes Solutions for Local Development
 
 ## Introduction
 
@@ -8,7 +8,7 @@ This document provides a comparative analysis of three Kubernetes-based tools fo
 
 - **minikube** — A local Kubernetes system for deploying clusters on a single machine
 - **kind** (Kubernetes IN Docker) — A tool for creating local Kubernetes clusters in Docker containers
-- **k3d** — A tool for creating local Kubernetes clusters in Docker containers using Rancher Kubernetes Engine (RKE)
+- **k3d** — A tool for creating local Kubernetes clusters in Docker containers using **k3s**, a lightweight Kubernetes distribution developed by Rancher.
 
 The team uses **GitHub** for version control to ensure security and control over the development process. This analysis will help AsciiArtify make an informed decision for their Proof of Concept (PoC) environment.
 
@@ -49,7 +49,7 @@ The team uses **GitHub** for version control to ensure security and control over
 - Addons system for easy feature installation
 - Profile management for multiple clusters
 - Integration with CI/CD tools
-Size
+
 **kind:**
 - YAML-based cluster configuration
 - Excellent for CI/CD pipelines (GitHub Actions, GitLab CI)
@@ -258,7 +258,7 @@ k3d cluster delete asciiartify
 
 **Recommended Infrastructure Evolution:**
 ```
-Local Development (k3d) → Staging (k3s cluster) → Production (Full Kubernetes/k3s)
+Local Development (k3d) → Staging / MVP (k3s) → Production Kubernetes (k3s or full Kubernetes depending on scale)
 ```
 
 #### Alternative Scenarios
@@ -275,7 +275,7 @@ Local Development (k3d) → Staging (k3s cluster) → Production (Full Kubernete
 
 ### Final Recommendation
 
-For the **AsciiArtify PoC**, we recommend **k3d** as the optimal choice. It provides:
+For the **AsciiArtify PoC** **k3d** is recommended as the optimal choice. It provides:
 
 1. **Immediate productivity** — Team can start developing without complex setup
 2. **Cost efficiency** — Minimal hardware requirements
