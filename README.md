@@ -3,6 +3,7 @@ Infrastructure PoC for local Kubernetes development, GitOps workflows, and autom
 
 ## 📁 Repository Structure
 
+```
 AsciiArtify/
 ├── Dockerfile              # Container definition for Hello World application
 ├── .dockerignore           # Excludes unnecessary files from Docker build context
@@ -13,3 +14,4 @@ AsciiArtify/
 │
 ├── .data/                  # Demo artifacts (not part of runtime system)
 │   └── demo.gif            # asciinema recording exported as GIF
+```
