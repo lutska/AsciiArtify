@@ -6,9 +6,9 @@
 
 This document provides a comparative analysis of three Kubernetes-based tools for local development:
 
-- **minikube** — A local Kubernetes system for deploying clusters on a single machine
-- **kind** (Kubernetes IN Docker) — A tool for creating local Kubernetes clusters in Docker containers
-- **k3d** — A tool for creating local Kubernetes clusters in Docker containers using **k3s**, a lightweight Kubernetes distribution developed by Rancher.
+- **minikube** (https://minikube.sigs.k8s.io/) — A local Kubernetes system for deploying clusters on a single machine
+- **kind** (Kubernetes IN Docker) (https://kind.sigs.k8s.io/) — A tool for creating local Kubernetes clusters in Docker containers
+- **k3d** (https://k3d.io/) — A tool for creating local Kubernetes clusters in Docker containers using **k3s**, a lightweight Kubernetes distribution developed by Rancher.
 
 The team uses **GitHub** for version control to ensure security and control over the development process. This analysis will help AsciiArtify make an informed decision for their Proof of Concept (PoC) environment.
 
