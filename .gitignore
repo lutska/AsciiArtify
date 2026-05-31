@@ -3,5 +3,7 @@
 #docker build artifacts
 *.tar
 #kubernetes 
+*.kubeconfig
+# Logs and temporary files
 *.log
 *.tmp
