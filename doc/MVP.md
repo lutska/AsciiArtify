@@ -96,7 +96,7 @@ Demonstrates:
 
 ### 3. Verify Deployment After Synchronization
 
-![Application check after sync](../.data/mvp_app_check_after_sync.gif)
+![Application check after sync](../.data/mvp_app_deployed.gif)
 
 Demonstrates:
 
