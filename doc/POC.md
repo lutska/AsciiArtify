@@ -169,7 +169,7 @@ Password: <retrieved from previous command>
 
 Below is a demonstration of the deployment and configuration process on GitHub Codespaces 
 
-![ArgoCD Deployment Demo](../.data/demo_ArgoCD.gif)
+![ArgoCD Deployment Demo](../.data/poc_demo_ArgoCD.gif)
 
 The recording demonstrates:
 

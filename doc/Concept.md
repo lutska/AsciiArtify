@@ -182,7 +182,7 @@ k3d version
 
 Below is a demonstration of deploying a simple application using k3d:
 
-![k3d Demo](../.data/demo.gif)
+![k3d Demo](../.data/concept_demo.gif)
 
 
 **Step-by-step commands:**
