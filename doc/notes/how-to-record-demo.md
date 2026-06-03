@@ -46,8 +46,12 @@ asciinema rec -c "bash" demo.cast
 # 2. Convert asciinema → GIF (agg)
 
 ## Install agg
+
+chose OS and Architecture [here](https://github.com/asciinema/agg/releases/)
+
 ```bash
-cargo install --git https://github.com/asciinema/agg
+curl -L https://github.com/asciinema/agg/releases/download/v1.9.0/agg-x86_64-unknown-linux-gnu -o agg
+chmod +x agg
 ```
 
 ## Basic conversion
@@ -66,6 +70,10 @@ agg --speed 2 demo.cast demo.gif
 agg --idle-time-limit 1 demo.cast demo.gif
 ```
 
+Example:
+```bash
+./agg --theme monokai --font-size 20 --speed 2 https://asciinema.org/a/Pyf6XWQGHwjFICmd gitleaks_demo.gif
+```
 ---
 
 # 3. Screen Recording (OBS Studio)
